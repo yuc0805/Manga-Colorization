@@ -337,4 +337,7 @@ if __name__ == "__main__":
 
 
 # python fid.py /path/to/images /path/to/other_images
-# python fid.py /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/transform_testA /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/transform_testB
+# python fid.py /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/ControlNet_res /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/transform_testB
+# python fid.py /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/translated_testA /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/transform_testB
+
+# python fid.py /Users/leo/Desktop/StyTR-2/out_4800 /Users/leo/Desktop/StyTR-2/dataset/monet2photo/monet2photo/testB
