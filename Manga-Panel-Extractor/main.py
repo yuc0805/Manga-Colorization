@@ -3,12 +3,13 @@ import argparse
 from argparse import RawTextHelpFormatter
 # project
 from panel_extractor import PanelExtractor
+import os
 
 
 def main(args):
     panel_extractor = PanelExtractor(keep_text=args.keep_text, min_pct_panel=args.min_panel, max_pct_panel=args.max_panel)
     panels, masks, panel_masks = panel_extractor.extract(args.folder)
-    panel_extractor.concatPanels(args.folder, [], masks, panel_masks)
+    panel_extractor.concatPanels(args.folder, panels, masks, panel_masks)
 
 
 if __name__ == "__main__":
