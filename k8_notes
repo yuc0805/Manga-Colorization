@@ -1,0 +1,91 @@
+# image path: https://gitlab.nrp-nautilus.io/yunfeiluo/idh-test/container_registry/3896
+
+# create
+kubectl create -f gpu_pod.yaml
+kubectl create -f gpu_dep.yaml
+# list
+kubectl get pods
+# check log
+kubectl logs test-pod
+# check nodes
+kubectl get nodes -L nvidia.com/gpu.product
+# log in-
+kubectl exec -it test-pod -- /bin/bash
+kubectl exec -it physio-model-5bf5bddbf6-cgv7m -- /bin/bash
+
+kubectl exec -it physio-model-l-58f79fd5f6-8h57s  -- /bin/bash
+# delete
+kubectl delete pod test-pod
+# upload file
+kubectl cp data/splits_5fold test-pod:IDH-task/data/splits_5fold -c gpu-container
+
+kubectl cp data/pretrain physio-model-l-f55f79c47-d2khh:/HGB/data/pretrain -c physio-model-l
+kubectl cp data/pretrain.zip physio-model-l-f55f79c47-q556k:HGB/data -c physio-model-l
+
+kubectl cp nlp_supervise/sensor_embed.pkl physio-model-l-f55f79c47-q556k:data/sensor_embed.pkl -c physio-model-l
+
+# download file
+kubectl cp test-pod:IDH-task/data/exp_res/pre_real_base_multi_0.png data/exp_res/pre_real_base_multi_0.png -c gpu-container
+kubectl cp physio-model-l-f55f79c47-q556k:data/wesad/samples data/samples -c physio-model-l
+
+
+kubectl cp physio-model-l-f55f79c47-d2khh:/data/results/model_checkpoint_cross_vit100ce_99.pth  results/model_checkpoint_cross_vit100ce_99.pth -c physio-model-l
+kubectl cp physio-model-l-f55f79c47-h62rh:HGB/data/pretrain/cross_vit/cf cf  -c physio-model-l
+
+kubectl cp physio-model-l-f55f79c47-h62rh:data/results/linearProb_auditory_checkpoint_cross_freeze_vit100_61_9.pth results/linearProb_auditory_checkpoint_cross_freeze_vit100_61_9.pth -c physio-model-l
+kubectl cp physio-model-l-f55f79c47-q556k:data/results/reconstruct_eval.pkl results/reconstruct_eval.pkl
+kubectl get pods test-pod -o jsonpath='{.spec.containers[*].name}'
+
+# conda env
+# list
+conda env list
+# export
+conda env export | grep -v "^prefix: " > environment.yml
+# create
+conda env create -f environment.yml
+# update
+conda env update --file environment.yml
+
+# download from url
+wget https://github.com/yunfeiluo/Demo-Apps/blob/main/envs/environment.yml
+
+# docker
+# list
+docker images
+# build
+docker build -t dockerfile .
+# no cache
+docker build --no-cache -t dockerfile .
+docker build . --no-cache -t my-first-container:latest
+# save
+docker save -o myimage.tar dockerfile
+
+# push container to gitlab
+docker login gitlab-registry.nrp-nautilus.io
+docker build --no-cache --platform="linux/amd64" -t gitlab-registry.nrp-nautilus.io/yunfeiluo/idh-test .
+docker push gitlab-registry.nrp-nautilus.io/yunfeiluo/idh-test
+
+docker build --no-cache --platform="linux/arm64" -t gitlab-registry.nrp-nautilus.io/yunfeiluo/edge-ml .
+docker push gitlab-registry.nrp-nautilus.io/yunfeiluo/edge-ml
+
+# clean up docker
+docker system prune
+
+# start screen
+screen
+# list all screens
+screen -ls
+# detach
+ctrl+a followed by d
+# resume
+screen -r id
+screen -r -d id
+# kill screen
+screen -X -S id kill
+
+# check number of files
+ls -1 | wc -l
+
+
+# force pull
+git reset --hard origin/master

@@ -341,3 +341,10 @@ if __name__ == "__main__":
 # python fid.py /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/translated_testA /Users/leo/Desktop/Manga-Colorization/Manga_CycleGAN/manga/eval/transform_testB
 
 # python fid.py /Users/leo/Desktop/StyTR-2/out_4800 /Users/leo/Desktop/StyTR-2/dataset/monet2photo/monet2photo/testB
+
+# python fid.py /Users/leo/Desktop/Manga-Colorization/pix2pix_baseline_results/fake_B /Users/leo/Desktop/Manga-Colorization/pix2pix_baseline_results/real_B
+# python fid.py /Users/leo/Desktop/Manga-Colorization/panel_pix2pix_result/color /Users/leo/Desktop/Manga-Colorization/pix2pix_baseline_results/real_B
+
+# python fid.py /Users/leo/Desktop/Manga-Colorization/panel_cyclegan_result/color /Users/leo/Desktop/Manga-Colorization/pix2pix_baseline_results/real_B
+
+# python fid.py /Users/leo/Desktop/Manga-Colorization/panel_pix2pix_result/color /Users/leo/Desktop/Manga-Colorization/pix2pix_baseline_results/real_B
