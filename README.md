@@ -1,7 +1,7 @@
 # Manga Colorization
 
 This repository hosts the code for training and applying generative models for manga colorization. It includes implementations for CycleGAN and Pix2Pix models, allowing for experimentation and fine-tuning to achieve high-quality colorized manga panels.
-![Manga Colorization Pipeline](https://github.com/yuc0805/Manga-Colorization/main/Manga_Pipeline.png)
+![Manga Colorization Pipeline](Manga_Pipeline.png)
 
 ## Project Structure
 
