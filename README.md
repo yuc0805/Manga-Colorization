@@ -18,6 +18,24 @@ We used the Fréchet Inception Distance (FID) as our evaluation metric, as it is
 | Pix2Pix w/ Extractor    | 48.49 |
 
 
+## Insights
+Based on the results, several key insights can be drawn regarding the performance of different models for manga colorization:
+
+1. **Model Performance**:
+   - **Fine-tuned Pix2Pix**: Achieved the best performance with an FID score of 44.02, indicating high-quality colorized outputs closely matching the ground truth.
+   - **Fine-tuned CycleGAN**: Had the highest FID score of 74.25, showing it is less effective for this task compared to Pix2Pix.
+
+2. **Impact of Extractor**:
+   - **CycleGAN with Extractor**: Improved performance (FID 65.54) compared to the standard CycleGAN but still lagged behind Pix2Pix models.
+   - **Pix2Pix with Extractor**: Surprisingly showed a performance drop (FID 48.49), suggesting the extractor may introduce noise or lose important global context.
+
+3. **Comparison of Model Approaches**:
+   - **Pix2Pix vs. CycleGAN**: Pix2Pix models consistently outperformed CycleGAN models, suggesting that paired data (Pix2Pix) is more effective for manga colorization than domain mappings (CycleGAN). This is likely because manga styles vary greatly, and paired data better captures these inconsistencies.
+
+4. **Challenges and Considerations**:
+   - **Diverse Manga Styles**: Each manga has a unique style, and capturing this diversity requires sophisticated tuning and more computational resources.
+   - **Global Context Loss**: The inclusion of extractors can sometimes lead to a loss of global context, impacting performance.
+
 ## Project Structure
 
 1. **Manga Panel Extraction**
